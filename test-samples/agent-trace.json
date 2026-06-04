@@ -1,0 +1,123 @@
+{
+  "trace_id": "trace-001",
+  "task": "Book a flight from NYC to London on June 15th for 2 passengers",
+  "steps": [
+    {
+      "step": 1,
+      "reasoning": "I need to search for flights from NYC to London on June 15th",
+      "tool": "search_flights",
+      "arguments": {
+        "origin": "NYC",
+        "destination": "London",
+        "date": "2026-06-15",
+        "passengers": 2
+      },
+      "result": {
+        "status": "success",
+        "data": [
+          {"flight": "AA100", "departure": "08:00", "arrival": "20:00", "price": 450},
+          {"flight": "BA200", "departure": "10:00", "arrival": "22:00", "price": 520}
+        ]
+      }
+    },
+    {
+      "step": 2,
+      "reasoning": "AA100 is cheaper, I'll select that flight",
+      "tool": "select_flight",
+      "arguments": {
+        "flight_id": "AA100",
+        "passengers": 2
+      },
+      "result": {
+        "status": "success",
+        "booking_ref": "BK-78901"
+      }
+    },
+    {
+      "step": 3,
+      "reasoning": "I need to provide passenger details",
+      "tool": "add_passenger_details",
+      "arguments": {
+        "booking_ref": "BK-78901",
+        "passengers": [
+          {"name": "John Doe", "dob": "1985-03-15"},
+          {"name": "Jane Doe", "dob": "1987-07-22"}
+        ]
+      },
+      "result": {
+        "status": "success",
+        "message": "Passengers added"
+      }
+    },
+    {
+      "step": 4,
+      "reasoning": "Now I need to process payment",
+      "tool": "process_payment",
+      "arguments": {
+        "booking_ref": "BK-78901",
+        "amount": 450,
+        "currency": "USD"
+      },
+      "result": {
+        "status": "failed",
+        "error": "Insufficient funds"
+      }
+    },
+    {
+      "step": 5,
+      "reasoning": "Payment failed. Let me try the same payment again",
+      "tool": "process_payment",
+      "arguments": {
+        "booking_ref": "BK-78901",
+        "amount": 450,
+        "currency": "USD"
+      },
+      "result": {
+        "status": "failed",
+        "error": "Insufficient funds"
+      }
+    },
+    {
+      "step": 6,
+      "reasoning": "Trying a third time might work",
+      "tool": "process_payment",
+      "arguments": {
+        "booking_ref": "BK-78901",
+        "amount": 450,
+        "currency": "USD"
+      },
+      "result": {
+        "status": "failed",
+        "error": "Insufficient funds"
+      }
+    },
+    {
+      "step": 7,
+      "reasoning": "Let me check if there are other payment methods",
+      "tool": "get_payment_methods",
+      "arguments": {
+        "booking_ref": "BK-78901"
+      },
+      "result": {
+        "status": "success",
+        "methods": ["credit_card", "debit_card", "paypal"]
+      }
+    },
+    {
+      "step": 8,
+      "reasoning": "I'll try PayPal instead",
+      "tool": "process_payment",
+      "arguments": {
+        "booking_ref": "BK-78901",
+        "amount": 900,
+        "currency": "USD",
+        "method": "paypal"
+      },
+      "result": {
+        "status": "failed",
+        "error": "Insufficient funds in PayPal account"
+      }
+    }
+  ],
+  "final_outcome": "Task failed — booking created but payment unsuccessful, no ticket issued"
+}

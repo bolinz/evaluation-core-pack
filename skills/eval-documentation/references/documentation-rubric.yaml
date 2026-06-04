@@ -1,0 +1,69 @@
+rubric:
+  name: documentation
+  version: "1.0"
+  sub_dimensions:
+    - id: completeness
+      name: Completeness
+      weight: 0.35
+      l1_gate: needs_work
+      scoring:
+        5: All required docs present, comprehensive and well-maintained
+        4: Most docs present, minor gaps
+        3: Key docs present but gaps in secondary docs
+        2: Missing critical documentation
+        1: No documentation or placeholder only
+      checklist:
+        - "README explains project and setup"
+        - "Installation instructions are complete"
+        - "API documentation covers all endpoints"
+        - "Architecture documentation exists"
+        - "Contributing guidelines exist"
+        - "Changelog or version history maintained"
+
+    - id: readability
+      name: Readability
+      weight: 0.25
+      scoring:
+        5: Clear, concise, well-formatted with examples and diagrams
+        4: Clear with minor readability issues
+        3: Understandable but could be clearer
+        2: Difficult to follow, lacks examples
+        1: Incomprehensible or misleading
+      checklist:
+        - "Language is clear and concise"
+        - "Code examples present and correct"
+        - "Diagrams or visuals used where helpful"
+        - "Content follows logical flow"
+        - "Glossary for domain terms"
+
+    - id: accuracy
+      name: Accuracy
+      weight: 0.25
+      scoring:
+        5: Fully accurate, tested, up-to-date
+        4: Mostly accurate with minor outdated content
+        3: Some inaccuracies or outdated content
+        2: Significant inaccuracies or outdated
+        1: Completely inaccurate or misleading
+      checklist:
+        - "Commands and snippets are tested and correct"
+        - "Configuration examples match current versions"
+        - "Outdated content is marked"
+        - "Links and references are valid"
+        - "Version compatibility documented"
+
+    - id: structure_and_navigation
+      name: Structure & Navigation
+      weight: 0.15
+      scoring:
+        5: Well-organized, easy to navigate, good cross-references
+        4: Good structure with minor navigation issues
+        3: Adequate structure but hard to find content
+        2: Poor structure, content is scattered
+        1: No structure or organization
+      checklist:
+        - "Table of contents present for long docs"
+        - "Cross-references between related docs"
+        - "Consistent heading hierarchy"
+        - "Intuitive file naming convention"
+        - "Search or index exists"

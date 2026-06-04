@@ -1,0 +1,173 @@
+registry_version: 1.0
+last_updated: 2026-06-04
+
+dimensions:
+  - id: technical_feasibility
+    name: 技术可行性
+    levels: [L2]
+    score_range: 1-5
+    default_weight: 1.0
+    description: 评估方案在当前技术条件下是否可实现
+    evaluator_ref: internal:eval-feasibility
+
+  - id: architectural_soundness
+    name: 架构合理性
+    levels: [L2]
+    score_range: 1-5
+    default_weight: 1.0
+    description: 评估架构设计的合理性和健壮性
+    evaluator_ref: internal:eval-architecture
+
+  - id: security
+    name: 安全
+    levels: [L1, L2]
+    score_range: 1-5
+    default_weight: 1.5
+    l1_gate: pass
+    description: 评估安全风险和防护措施
+    evaluator_ref: internal:eval-security
+
+  - id: scalability
+    name: 可扩展性
+    levels: [L2]
+    score_range: 1-5
+    default_weight: 0.7
+    description: 评估系统的扩展能力和性能特性
+    evaluator_ref: internal:eval-architecture
+
+  - id: maintainability
+    name: 可维护性
+    levels: [L2]
+    score_range: 1-5
+    default_weight: 0.7
+    description: 评估系统的可维护性和运营复杂度
+    evaluator_ref: internal:eval-architecture
+
+  - id: complexity
+    name: 实现复杂度
+    levels: [L2]
+    score_range: 1-5
+    default_weight: 0.7
+    invert_score: true
+    evaluator_ref: internal:eval-complexity
+
+  - id: cost
+    name: 成本
+    levels: [L2]
+    score_range: 1-5
+    default_weight: 0.5
+    evaluator_ref: internal:eval-tech-choice
+
+  - id: interoperability
+    name: 跨平台兼容性
+    levels: [L2]
+    score_range: 1-5
+    default_weight: 0.5
+    description: 评估跨平台兼容性和集成能力
+    evaluator_ref: internal:eval-interoperability
+
+  - id: documentation
+    name: 文档质量
+    levels: [L1, L2]
+    score_range: 1-5
+    default_weight: 0.5
+    l1_gate: needs_work
+    evaluator_ref: internal:eval-documentation
+
+  - id: format
+    name: 格式合规
+    levels: [L1]
+    l1_gate: warning
+    score_range: 1-5
+    default_weight: 0.3
+    evaluator_ref: internal:eval-format
+
+  - id: skill_quality
+    name: 技能质量
+    levels: [L1, L2]
+    score_range: 1-5
+    default_weight: 1.5
+    l1_gate: fail
+    evaluator_ref: internal:eval-skill-quality
+    sub_dimensions:
+      - id: description_and_discoverability
+        weight: 0.15
+      - id: structure_and_documentation
+        weight: 0.20
+      - id: instruction_clarity
+        weight: 0.25
+      - id: security_and_safety
+        weight: 0.25
+      - id: integration_quality
+        weight: 0.15
+
+  - id: agent_behavior
+    name: Agent 行为
+    levels: [L2, L3]
+    score_range: 1-5
+    default_weight: 1.5
+    evaluator_ref: internal:eval-agent-behavior
+    sub_dimensions:
+      - id: tool_selection
+        weight: 0.20
+      - id: argument_extraction
+        weight: 0.15
+      - id: result_utilization
+        weight: 0.15
+      - id: error_recovery
+        weight: 0.15
+      - id: plan_coherence
+        weight: 0.15
+      - id: task_completion
+        weight: 0.20
+
+  - id: reasoning
+    name: 推理质量
+    levels: [L2, L3]
+    score_range: 1-5
+    default_weight: 1.0
+    evaluator_ref: internal:eval-reasoning
+    sub_dimensions:
+      - id: premise_accuracy
+        weight: 0.25
+      - id: logical_consistency
+        weight: 0.25
+      - id: alternative_consideration
+        weight: 0.20
+      - id: confidence_calibration
+        weight: 0.15
+      - id: belief_update
+        weight: 0.15
+
+templates:
+  - target: skill
+    label: 技能质量评估
+    dimensions: [skill_quality]
+    require_l1: true
+
+  - target: agent_behavior
+    label: Agent 行为评估
+    dimensions: [agent_behavior]
+    require_transcript: true
+
+  - target: architecture
+    label: 架构评估
+    dimensions: [architectural_soundness, maintainability, complexity, cost]
+
+  - target: tech_choice
+    label: 技术选型评估
+    dimensions: [cost, complexity, maintainability]
+
+  - target: complete
+    label: 全面评估
+    dimensions:
+      - technical_feasibility
+      - architectural_soundness
+      - maintainability
+      - complexity
+      - cost
+      - format
+      - skill_quality
+      - agent_behavior
+      - reasoning
+    require_l1: [format]

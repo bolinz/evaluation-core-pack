@@ -1,0 +1,51 @@
+rubric:
+  name: format
+  version: "1.0"
+  sub_dimensions:
+    - id: structure_compliance
+      name: Structure Compliance
+      weight: 0.35
+      scoring:
+        5: Perfect structure, all required elements present
+        4: Good structure with minor deviations
+        3: Acceptable structure, some sections missing
+        2: Poor structure, multiple sections missing or wrong
+        1: No recognizable structure, completely non-compliant
+      l1_gate: fail
+      checklist:
+        - "frontmatter has name + description"
+        - "Required sections exist per document type"
+        - "Section hierarchy is logical"
+        - "File naming follows conventions"
+
+    - id: completeness
+      name: Completeness
+      weight: 0.35
+      scoring:
+        5: All elements present, no gaps
+        4: Minor omissions, easily fixable
+        3: Notable gaps but core content exists
+        2: Significant missing content
+        1: Mostly placeholder or empty
+      checklist:
+        - "All mandatory fields populated"
+        - "No placeholder/TODO content"
+        - "Examples present where required"
+        - "References resolved"
+        - "Edge cases documented"
+
+    - id: consistency
+      name: Consistency
+      weight: 0.30
+      scoring:
+        5: Fully consistent throughout
+        4: Minor inconsistencies
+        3: Notable consistency issues
+        2: Pervasive consistency problems
+        1: Chaotic, no consistent style
+      checklist:
+        - "Terminology consistent"
+        - "Formatting style uniform"
+        - "Code blocks have language tags"
+        - "Heading levels follow hierarchy"
+        - "Cross-references correct"

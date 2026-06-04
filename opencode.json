@@ -1,0 +1,19 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "references/eval-best-practices.md",
+    "references/evals.json",
+    "references/tool-mapping.md",
+    "skills/eval-skill-quality/references/skill-quality-rubric.yaml",
+    "skills/eval-agent-behavior/references/agent-behavior-rubric.yaml",
+    "skills/eval-feasibility/references/feasibility-rubric.yaml",
+    "skills/eval-architecture/references/architecture-rubric.yaml",
+    "skills/eval-complexity/references/complexity-rubric.yaml",
+    "skills/eval-tech-choice/references/tech-choice-rubric.yaml",
+    "skills/eval-format/references/format-rubric.yaml",
+    "skills/eval-security/references/security-rubric.yaml",
+    "skills/eval-interoperability/references/interoperability-rubric.yaml",
+    "skills/eval-documentation/references/documentation-rubric.yaml",
+    "skills/eval-reasoning/references/reasoning-rubric.yaml"
+  ]
+}

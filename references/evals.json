@@ -1,0 +1,225 @@
+{
+  "skill_name": "eval-core-pack",
+  "version": "1.0.0",
+  "evals": [
+    {
+      "id": 1,
+      "type": "capability",
+      "trials": 3,
+      "grader_aggregation": "average",
+      "prompt": "Evaluate the skill at ./test-samples/well-written-skill using eval-skill-quality",
+      "expected_output": "A report with 5 dimension scores between 1-5, letter grade, and improvement suggestions",
+      "assertions": [
+        "Output contains all 5 sub_dimension scores",
+        "Each dimension score is between 1 and 5",
+        "Letter grade is A, B, C, D, or F",
+        "Overall score is between 0 and 100"
+      ],
+      "graders": [
+        {
+          "type": "model",
+          "weight": 1.0,
+          "rubric": "skills/eval-skill-quality/references/skill-quality-rubric.yaml",
+          "assertions": [
+            "Output contains all 5 sub_dimension scores",
+            "Each dimension score is between 1 and 5",
+            "Letter grade is A, B, C, D, or F",
+            "Overall score is between 0 and 100"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "regression",
+      "trials": 3,
+      "grader_aggregation": "average",
+      "prompt": "Evaluate the skill at ./test-samples/known-bad-skill using eval-skill-quality",
+      "expected_output": "Score below 50, letter grade D or F, critical security issue flagged",
+      "assertions": [
+        "Overall score < 50",
+        "Security sub-dimension scored 1 or 2",
+        "Verdict is REJECT",
+        "Improvement suggestions present"
+      ],
+      "graders": [
+        {
+          "type": "model",
+          "weight": 1.0,
+          "rubric": "skills/eval-skill-quality/references/skill-quality-rubric.yaml",
+          "assertions": [
+            "Overall score < 50",
+            "Security sub-dimension scored 1 or 2",
+            "Verdict is REJECT",
+            "Improvement suggestions present"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "capability",
+      "trials": 3,
+      "grader_aggregation": "average",
+      "prompt": "Analyze the agent trajectory at ./test-samples/agent-trace.json using eval-agent-behavior",
+      "expected_output": "A 6-dimension behavior report with compound error analysis",
+      "assertions": [
+        "All 6 sub_dimensions are scored",
+        "Tool Selection score present",
+        "Task Completion score present",
+        "Compound error status reported"
+      ],
+      "graders": [
+        {
+          "type": "model",
+          "weight": 1.0,
+          "rubric": "skills/eval-agent-behavior/references/agent-behavior-rubric.yaml",
+          "assertions": [
+            "All 6 sub_dimensions are scored",
+            "Tool Selection score present",
+            "Task Completion score present",
+            "Compound error status reported"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "benchmark",
+      "trials": 1,
+      "grader_aggregation": "all_pass",
+      "prompt": "Run complete evaluation on the architecture design at ./test-samples/architecture-design.md",
+      "expected_output": "Multi-dimension evaluation report using evaluation-orchestrator",
+      "assertions": [
+        "Evaluation report uses unified Schema",
+        "At least 3 dimensions scored",
+        "Verdict present (APPROVE/NEEDS_WORK/REJECT)",
+        "Recommendations section present"
+      ],
+      "graders": [
+        {
+          "type": "model",
+          "weight": 1.0,
+          "assertions": [
+            "Evaluation report uses unified Schema",
+            "At least 3 dimensions scored",
+            "Verdict present (APPROVE/NEEDS_WORK/REJECT)",
+            "Recommendations section present"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "capability",
+      "trials": 3,
+      "grader_aggregation": "average",
+      "prompt": "Evaluate the security posture of the architecture at ./test-samples/architecture-design.md using eval-security",
+      "expected_output": "A security evaluation report with 4 dimension scores",
+      "assertions": [
+        "Auth Service SPOF is flagged",
+        "Missing circuit breaker pattern is noted",
+        "Encryption at rest is checked",
+        "Recommendations present"
+      ],
+      "graders": [
+        {
+          "type": "model",
+          "weight": 1.0,
+          "rubric": "skills/eval-security/references/security-rubric.yaml",
+          "assertions": [
+            "Auth Service SPOF is flagged",
+            "Missing circuit breaker pattern is noted",
+            "Encryption at rest is checked",
+            "Recommendations present"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "capability",
+      "trials": 3,
+      "grader_aggregation": "average",
+      "prompt": "Evaluate the interoperability of the architecture at ./test-samples/architecture-design.md using eval-interoperability",
+      "expected_output": "An interoperability report with 4 dimension scores",
+      "assertions": [
+        "Async communication pattern assessed",
+        "API standards checked",
+        "Data exchange format reviewed",
+        "Recommendations present"
+      ],
+      "graders": [
+        {
+          "type": "model",
+          "weight": 1.0,
+          "rubric": "skills/eval-interoperability/references/interoperability-rubric.yaml",
+          "assertions": [
+            "Async communication pattern assessed",
+            "API standards checked",
+            "Data exchange format reviewed",
+            "Recommendations present"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "capability",
+      "trials": 3,
+      "grader_aggregation": "average",
+      "prompt": "Evaluate the documentation quality of the skill at ./test-samples/well-written-skill using eval-documentation",
+      "expected_output": "A documentation quality report with 4 dimension scores",
+      "assertions": [
+        "Completeness scored",
+        "Readability scored",
+        "Accuracy scored",
+        "Structure & Navigation scored"
+      ],
+      "graders": [
+        {
+          "type": "model",
+          "weight": 1.0,
+          "rubric": "skills/eval-documentation/references/documentation-rubric.yaml",
+          "assertions": [
+            "Completeness scored",
+            "Readability scored",
+            "Accuracy scored",
+            "Structure & Navigation scored"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "capability",
+      "trials": 3,
+      "grader_aggregation": "average",
+      "prompt": "Analyze the reasoning quality in the agent trace at ./test-samples/agent-trace.json using eval-reasoning",
+      "expected_output": "A 5-dimension reasoning report with cross-reference analysis",
+      "assertions": [
+        "Premise Accuracy scored",
+        "Logical Consistency scored",
+        "Alternative Consideration scored",
+        "Confidence Calibration scored",
+        "Belief Update scored",
+        "Latent Risk status reported"
+      ],
+      "graders": [
+        {
+          "type": "model",
+          "weight": 1.0,
+          "rubric": "skills/eval-reasoning/references/reasoning-rubric.yaml",
+          "assertions": [
+            "Premise Accuracy scored",
+            "Logical Consistency scored",
+            "Alternative Consideration scored",
+            "Confidence Calibration scored",
+            "Belief Update scored",
+            "Latent Risk status reported"
+          ]
+        }
+      ]
+    }
+  ]
+}

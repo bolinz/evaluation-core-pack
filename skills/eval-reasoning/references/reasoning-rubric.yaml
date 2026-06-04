@@ -1,0 +1,53 @@
+rubric:
+  name: reasoning
+  version: "1.0"
+  sub_dimensions:
+    - id: premise_accuracy
+      name: Premise Accuracy
+      weight: 0.25
+      scoring:
+        5: All claims traceable to tool results, zero transcription errors
+        4: Claims mostly accurate, minor transcription errors
+        3: Some hallucinated details, but core facts correct
+        2: Frequent factual errors or hallucinations
+        1: Reasoning based on completely fabricated data
+
+    - id: logical_consistency
+      name: Logical Consistency
+      weight: 0.25
+      scoring:
+        5: Flawless logic, each step follows from previous, no contradictions
+        4: Minor logical gaps, overall coherent
+        3: Notable contradictions or non-sequiturs
+        2: Frequent logical errors, reasoning breaks down
+        1: Chaotic or self-contradictory reasoning
+
+    - id: alternative_consideration
+      name: Alternative Consideration
+      weight: 0.20
+      scoring:
+        5: Multiple options compared with explicit trade-offs before deciding
+        4: Options considered but comparison is superficial
+        3: Only one option seriously considered
+        2: Premature commitment without evaluation
+        1: No evidence of considering alternatives
+
+    - id: confidence_calibration
+      name: Confidence Calibration
+      weight: 0.15
+      scoring:
+        5: Confidence matches evidence, uncertainty expressed appropriately
+        4: Minor over/underconfidence
+        3: Notable mismatch between confidence and evidence
+        2: Frequent overconfidence on weak evidence
+        1: No calibration
+
+    - id: belief_update
+      name: Belief Update
+      weight: 0.15
+      scoring:
+        5: Swiftly updates beliefs when new evidence contradicts assumptions
+        4: Updates beliefs with some delay
+        3: Slow to update, repeated mistakes before correction
+        2: Ignores contradictory evidence
+        1: Doubles down on wrong assumptions

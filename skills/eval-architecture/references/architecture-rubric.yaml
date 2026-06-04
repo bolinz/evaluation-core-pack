@@ -1,0 +1,43 @@
+rubric:
+  name: architecture
+  version: "1.0"
+  sub_dimensions:
+    - id: architectural_soundness
+      name: Architectural Soundness
+      weight: 0.35
+      scoring:
+        5: Clear separation of concerns, robust interfaces, handles failures
+        4: Well-structured with minor design issues
+        3: Acceptable but has notable design debt
+        2: Poor structure, mixed concerns, fragile
+        1: No coherent architecture, fundamental flaws
+
+    - id: modularity_and_coupling
+      name: Modularity & Coupling
+      weight: 0.25
+      scoring:
+        5: High cohesion, minimal coupling, stable interfaces
+        4: Good modularity with minor coupling issues
+        3: Moderate coupling, some cohesion problems
+        2: High coupling, low cohesion, tangled dependencies
+        1: Monolithic or completely entangled
+
+    - id: scalability
+      name: Scalability
+      weight: 0.20
+      scoring:
+        5: Clear scaling strategy, no bottlenecks, future-proof
+        4: Scalable with minor constraints
+        3: Some scalability concerns but workable
+        2: Significant scalability limitations
+        1: Not scalable in current design
+
+    - id: maintainability
+      name: Maintainability
+      weight: 0.20
+      scoring:
+        5: Easy to maintain, well-documented, testable
+        4: Maintainable with minor documentation gaps
+        3: Acceptable but changes require care
+        2: Difficult to maintain, poor documentation
+        1: Unmaintainable, no documentation

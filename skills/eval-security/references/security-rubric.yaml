@@ -1,0 +1,45 @@
+rubric:
+  name: security
+  version: "1.0"
+  sub_dimensions:
+    - id: authentication_and_authorization
+      name: Authentication & Authorization
+      weight: 0.30
+      l1_gate: fail
+      scoring:
+        5: Strong auth, least-privilege, secure session management
+        4: Good auth with minor gaps (rate limiting, brute force protection)
+        3: Basic auth present but notable gaps (weak password policy, no MFA)
+        2: Significant auth flaws (broken session management, privilege escalation)
+        1: No auth or completely broken access control
+
+    - id: data_protection
+      name: Data Protection
+      weight: 0.30
+      l1_gate: fail
+      scoring:
+        5: Full encryption, input validation, secrets management
+        4: Good protection with minor gaps
+        3: Basic protection but missing key controls (no encryption at rest)
+        2: Significant gaps (no input validation, hardcoded secrets)
+        1: No protection, sensitive data exposed
+
+    - id: network_and_infrastructure_security
+      name: Network & Infrastructure Security
+      weight: 0.20
+      scoring:
+        5: Secure network design, modern TLS, dependency management
+        4: Good security with minor gaps
+        3: Basic security but outdated TLS or open ports
+        2: Poor network security, known vulnerable dependencies
+        1: No network security, default configurations
+
+    - id: compliance_and_governance
+      name: Compliance & Governance
+      weight: 0.20
+      scoring:
+        5: Full compliance, audit trail, incident response
+        4: Mostly compliant with minor gaps
+        3: Partial compliance, missing documentation
+        2: Poor compliance, no audit trail
+        1: No compliance consideration

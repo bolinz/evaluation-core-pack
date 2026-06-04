@@ -1,0 +1,43 @@
+rubric:
+  name: interoperability
+  version: "1.0"
+  sub_dimensions:
+    - id: platform_compatibility
+      name: Platform Compatibility
+      weight: 0.30
+      scoring:
+        5: Full cross-platform support, isolated platform code, tested
+        4: Good support with minor platform-specific gaps
+        3: Major platforms supported but gaps exist
+        2: Limited platform support, significant gaps
+        1: Single-platform only
+
+    - id: integration_quality
+      name: Integration Quality
+      weight: 0.30
+      scoring:
+        5: Standard APIs, versioned, backward-compatible, well-tested
+        4: Good integration with minor versioning gaps
+        3: Functional integration but missing versioning or tests
+        2: Poor integration design, breaking changes likely
+        1: No defined integration interface
+
+    - id: data_exchange
+      name: Data Exchange
+      weight: 0.25
+      scoring:
+        5: Standard schemas, validated, timezone-aware, evolvable
+        4: Good exchange with minor gaps
+        3: Basic exchange but missing schema validation
+        2: Poor data design, encoding or timezone issues
+        1: No data exchange standard
+
+    - id: standardization
+      name: Standardization
+      weight: 0.15
+      scoring:
+        5: Follows industry standards, minimal proprietary extensions
+        4: Mostly standard with minor deviations
+        3: Mixed standards and custom implementations
+        2: Mostly proprietary with little standardization
+        1: Fully custom, no standards followed

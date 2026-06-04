@@ -1,0 +1,43 @@
+rubric:
+  name: complexity
+  version: "1.0"
+  sub_dimensions:
+    - id: implementation_complexity
+      name: Implementation Complexity
+      weight: 0.30
+      scoring:
+        5: Trivial — single file, no new dependencies
+        4: Simple — few files touched, clear approach
+        3: Moderate — multiple components, known patterns
+        2: Complex — many systems, new patterns required
+        1: Very complex — novel architecture, high uncertainty
+
+    - id: dependency_complexity
+      name: Dependency Complexity
+      weight: 0.25
+      scoring:
+        5: No dependencies affected, fully isolated
+        4: One or two internal dependencies, stable
+        3: Multiple dependencies, some coordination needed
+        2: Cross-team dependencies, external services involved
+        1: Complex dependency chain with breaking changes
+
+    - id: change_impact
+      name: Change Impact
+      weight: 0.25
+      scoring:
+        5: Purely additive, no existing behavior changes
+        4: Minor behavior changes, well-contained
+        3: Affects multiple users or features
+        2: API or schema changes with migration
+        1: Breaking changes across the system
+
+    - id: cognitive_load
+      name: Cognitive Load
+      weight: 0.20
+      scoring:
+        5: Easy to understand, familiar patterns
+        4: Straightforward with familiar context
+        3: Moderate domain complexity
+        2: Difficult domain, unfamiliar codebase
+        1: Extremely complex, requires deep expertise

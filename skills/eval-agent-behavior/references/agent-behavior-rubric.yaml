@@ -1,0 +1,63 @@
+rubric:
+  name: agent-behavior
+  version: "1.0"
+  sub_dimensions:
+    - id: tool_selection
+      name: Tool Selection
+      weight: 0.20
+      scoring:
+        5: Always selects the correct tool, uses when needed, avoids when not
+        4: Occasional redundant calls but does not affect result
+        3: Wrong tool selection but self-corrects
+        2: Frequent wrong selection or missing tool calls
+        1: Fabricates non-existent tools
+
+    - id: argument_extraction
+      name: Argument Extraction
+      weight: 0.15
+      scoring:
+        5: Schema fully correct, semantically accurate, edge cases handled
+        4: Main parameters correct but edge cases missed
+        3: Format errors or minor semantic deviations
+        2: Frequent parameter errors causing API failures
+        1: Completely wrong or missing critical fields
+
+    - id: result_utilization
+      name: Result Utilization
+      weight: 0.15
+      scoring:
+        5: Tool results used accurately, no substitution or drift
+        4: Results used correctly but minor info omission
+        3: Occasional model knowledge substituted for tool results
+        2: Frequently ignores tool return values
+        1: Never uses tool return values
+
+    - id: error_recovery
+      name: Error Recovery
+      weight: 0.15
+      scoring:
+        5: Correct retry, fallback, or escalation on failure; clear communication
+        4: Handles common errors but some improper handling
+        3: Retries but may repeat same broken arguments
+        2: Crashes or hallucinates success on failure
+        1: No error handling at all
+
+    - id: plan_coherence
+      name: Plan Coherence
+      weight: 0.15
+      scoring:
+        5: Optimal path, no loops or dead ends, reasonable step count
+        4: Correct path but slightly roundabout
+        3: Some redundant steps or minor loops
+        2: Obvious loops or dead ends
+        1: Completely chaotic trajectory
+
+    - id: task_completion
+      name: Task Completion
+      weight: 0.20
+      scoring:
+        5: End-to-end goal fully achieved
+        4: Goal achieved with minor process issues
+        3: Partially achieved but key goal missed
+        2: Most goals not achieved
+        1: Completely off target

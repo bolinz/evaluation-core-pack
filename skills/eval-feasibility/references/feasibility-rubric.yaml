@@ -1,0 +1,43 @@
+rubric:
+  name: feasibility
+  version: "1.0"
+  sub_dimensions:
+    - id: technical_viability
+      name: Technical Viability
+      weight: 0.30
+      scoring:
+        5: Proven stack, stable dependencies, no blockers, fits infrastructure
+        4: Minor technology concerns with clear solutions
+        3: Significant concerns but no fundamental blockers
+        2: Core technologies unproven or major compatibility issues
+        1: Fundamental technical blockers, solution not buildable
+
+    - id: risk_assessment
+      name: Risk Assessment
+      weight: 0.30
+      scoring:
+        5: All risks identified with concrete mitigations
+        4: Most risks identified, mitigations planned
+        3: Key risks identified but mitigations unclear
+        2: Major risks unidentified or unaddressed
+        1: Critical risks ignored or denied
+
+    - id: resource_feasibility
+      name: Resource Feasibility
+      weight: 0.20
+      scoring:
+        5: All resources confirmed and available
+        4: Minor resource gaps with clear acquisition plan
+        3: Significant resource gaps, plan uncertain
+        2: Critical resource shortages
+        1: Resources unavailable or unrealistic
+
+    - id: timeline_realism
+      name: Timeline Realism
+      weight: 0.20
+      scoring:
+        5: Realistic timeline with buffer, concrete milestones
+        4: Achievable timeline, minor optimism
+        3: Tight timeline, buffer insufficient
+        2: Unrealistic timeline, milestones vague
+        1: Timeline impossible given scope

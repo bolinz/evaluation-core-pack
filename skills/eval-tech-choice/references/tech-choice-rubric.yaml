@@ -1,0 +1,43 @@
+rubric:
+  name: tech-choice
+  version: "1.0"
+  sub_dimensions:
+    - id: cost_analysis
+      name: Cost Analysis
+      weight: 0.30
+      scoring:
+        5: Minimal TCO, clear cost advantage
+        4: Reasonable costs with good value
+        3: Moderate costs, acceptable ROI
+        2: High costs, unclear ROI
+        1: Prohibitive costs
+
+    - id: technical_fit
+      name: Technical Fit
+      weight: 0.30
+      scoring:
+        5: Perfect fit, exceeds requirements
+        4: Good fit, minor gaps
+        3: Acceptable fit with workarounds
+        2: Poor fit, significant gaps
+        1: Wrong tool for the job
+
+    - id: ecosystem_health
+      name: Ecosystem Health
+      weight: 0.20
+      scoring:
+        5: Vibrant community, excellent docs, active development
+        4: Healthy ecosystem with minor gaps
+        3: Moderate community, adequate docs
+        2: Declining community, poor documentation
+        1: Dead or abandoned project
+
+    - id: migration_impact
+      name: Migration Impact
+      weight: 0.20
+      scoring:
+        5: Seamless migration, minimal disruption
+        4: Straightforward migration with clear plan
+        3: Moderate migration effort
+        2: Difficult migration, high risk
+        1: Migration effectively a rewrite

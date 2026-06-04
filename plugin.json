@@ -1,0 +1,11 @@
+{
+  "name": "evaluation-core",
+  "description": "Multi-dimensional evaluation pack: skills quality, security, architecture, agent behavior, reasoning, and more",
+  "version": "1.0.0",
+  "author": {
+    "name": "platform-team"
+  },
+  "license": "MIT",
+  "skills": "skills/",
+  "agents": "agents/"
+}

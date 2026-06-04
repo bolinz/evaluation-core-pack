@@ -1,0 +1,85 @@
+id: evaluation-core
+name: Evaluation Core Pack
+version: 1.0.0
+owners:
+  - platform-team
+distribution:
+  default: plugin
+  enable_skill_artifacts: false
+
+defaults:
+  permissions:
+    network: false
+    connectors: []
+
+skills:
+  - id: eval-skill-quality
+    path: skills/eval-skill-quality
+    description: Evaluate the quality of Skill definitions. Use when reviewing SKILL.md or checking skill completeness before publishing.
+    mode: prompt
+    entry: skills/eval-skill-quality/SKILL.md
+  - id: eval-agent-behavior
+    path: skills/eval-agent-behavior
+    description: Evaluate agent behavior and performance from transcripts or execution traces.
+    mode: prompt
+    entry: skills/eval-agent-behavior/SKILL.md
+  - id: eval-api
+    path: skills/eval-api
+    description: Evaluate API design quality, consistency, and adherence to standards.
+    mode: prompt
+    entry: skills/eval-api/SKILL.md
+  - id: eval-feasibility
+    path: skills/eval-feasibility
+    description: Evaluate technical feasibility, risks, and resource requirements.
+    mode: prompt
+    entry: skills/eval-feasibility/SKILL.md
+  - id: eval-architecture
+    path: skills/eval-architecture
+    description: Evaluate architecture design quality, modularity, scalability, and maintainability.
+    mode: prompt
+    entry: skills/eval-architecture/SKILL.md
+  - id: eval-complexity
+    path: skills/eval-complexity
+    description: Estimate implementation complexity and change impact.
+    mode: prompt
+    entry: skills/eval-complexity/SKILL.md
+  - id: eval-tech-choice
+    path: skills/eval-tech-choice
+    description: Evaluate technology choices for cost, fit, ecosystem health, and migration impact.
+    mode: prompt
+    entry: skills/eval-tech-choice/SKILL.md
+  - id: eval-format
+    path: skills/eval-format
+    description: Validate document format compliance against standards and best practices.
+    mode: prompt
+    entry: skills/eval-format/SKILL.md
+  - id: eval-security
+    path: skills/eval-security
+    description: Evaluate security risks, threat posture, and protective measures in designs and implementations.
+    mode: prompt
+    entry: skills/eval-security/SKILL.md
+  - id: eval-interoperability
+    path: skills/eval-interoperability
+    description: Evaluate cross-platform compatibility, system integration capability, and standardization level.
+    mode: prompt
+    entry: skills/eval-interoperability/SKILL.md
+  - id: eval-documentation
+    path: skills/eval-documentation
+    description: Evaluate documentation completeness, readability, and consistency.
+    mode: prompt
+    entry: skills/eval-documentation/SKILL.md
+  - id: eval-reasoning
+    path: skills/eval-reasoning
+    description: Evaluate agent reasoning quality, premise accuracy, logical consistency, and belief update behavior.
+    mode: prompt
+    entry: skills/eval-reasoning/SKILL.md
+  - id: eval-registry
+    path: skills/eval-registry
+    description: Central evaluation registry: dimension definitions, aggregations rules, and output schema. Use when looking up evaluation configuration.
+    mode: prompt
+    entry: skills/eval-registry/SKILL.md
+agents:
+  - id: evaluation-orchestrator
+    path: agents/evaluation-orchestrator.md
+  - id: eval-runner
+    path: agents/eval-runner.md
