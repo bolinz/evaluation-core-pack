@@ -159,6 +159,10 @@ When reasoning scores are HIGH but task_completion is LOW:
 | 2 | Poor reasoning, multiple logical errors |
 | 1 | No coherent reasoning or completely illogical |
 
+## Platform Compatibility
+
+This evaluator uses Read/Glob/Bash tools. See `references/tool-mapping.md` for equivalent tool names on opencode, Copilot CLI, VS Code, and Claude Code.
+
 ## Rubric Reference
 
 Detailed scoring criteria for each dimension are defined in:

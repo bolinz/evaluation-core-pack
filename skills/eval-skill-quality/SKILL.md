@@ -94,7 +94,7 @@ Evaluates tool usage efficiency and cross-platform readiness.
 1. **Read SKILL.md** — Load the target skill's SKILL.md file
 2. **Check frontmatter** — Verify name and description fields exist
 3. **Evaluate each dimension** — For each of the 5 dimensions, run the checklist items and assign a score (1-5)
-4. **Check L1 gate** — If Security & Safety has any critical finding, set verdict to reject
+4. <EXTREMELY-IMPORTANT>**Check L1 gate** — If Security & Safety has ANY critical finding (exec/eval/hardcoded credentials), set verdict to REJECT immediately. This is non-negotiable.</EXTREMELY-IMPORTANT>
 5. **Compute overall score** — Weighted average of dimension scores, convert to letter grade
 6. **Generate report** — Output structured report with scores, findings, and suggestions
 
@@ -171,3 +171,8 @@ Evaluates tool usage efficiency and cross-platform readiness.
 | 60-69 | C | Needs significant work |
 | 50-59 | D | Needs major improvements |
 | 0-49 | F | Not publishable |
+
+## Platform Compatibility
+
+This evaluator uses Read/Glob/Bash tools. See `references/tool-mapping.md` for equivalent tool names on opencode, Copilot CLI, VS Code, and Claude Code.
+

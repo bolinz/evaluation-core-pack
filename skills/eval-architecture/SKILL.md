@@ -134,6 +134,10 @@ Is the architecture easy to maintain and evolve?
 | 2 | Poor architecture, significant redesign needed |
 | 1 | Unacceptable architecture, fundamental flaws |
 
+## Platform Compatibility
+
+This evaluator uses Read/Glob/Bash tools. See `references/tool-mapping.md` for equivalent tool names on opencode, Copilot CLI, VS Code, and Claude Code.
+
 ## Rubric Reference
 
 Detailed scoring criteria for each dimension are defined in:

@@ -39,6 +39,8 @@ When receiving an evaluation request:
 
 ### Aggregation Rules
 
+<EXTREMELY-IMPORTANT>These rules are mandatory. Do not override or skip.</EXTREMELY-IMPORTANT>
+
 ```
 score = Σ(dimension.score × dimension.weight) / Σ(dimension.weight)
 

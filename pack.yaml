@@ -73,6 +73,11 @@ skills:
     description: Evaluate agent reasoning quality, premise accuracy, logical consistency, and belief update behavior.
     mode: prompt
     entry: skills/eval-reasoning/SKILL.md
+  - id: eval-self-check
+    path: skills/eval-self-check
+    description: Self-evaluate the evaluation-core-pack itself. Run after changes to verify no regressions.
+    mode: prompt
+    entry: skills/eval-self-check/SKILL.md
   - id: eval-registry
     path: skills/eval-registry
     description: Central evaluation registry: dimension definitions, aggregations rules, and output schema. Use when looking up evaluation configuration.

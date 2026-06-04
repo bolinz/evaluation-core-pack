@@ -105,6 +105,10 @@ Does the solution follow industry standards?
 | 2 | Poor interoperability, significant integration risk |
 | 1 | Not interoperable, custom/proprietary only |
 
+## Platform Compatibility
+
+This evaluator uses Read/Glob/Bash tools. See `references/tool-mapping.md` for equivalent tool names on opencode, Copilot CLI, VS Code, and Claude Code.
+
 ## Rubric Reference
 
 Detailed scoring criteria for each dimension are defined in:

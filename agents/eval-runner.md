@@ -36,37 +36,39 @@ You are a continuous evaluation specialist. Your job is to run structured eval c
 
 ### Workflow
 
-1. **Look up test cases** — Use the table below for test case definitions. Full data also available at `agents/references/evals.json`.
+1. **Look up test cases** — Use the table below for test case definitions. Full data also available at `references/evals.json`.
 2. Create `evals/iterations/iteration-<N+1>/` directory
 3. For each test case:
    a. Determine trial count from `trials` field (default 1)
-   b. For each trial (1..N):
+   b. If test case has a `scenario` field, incorporate it: present the scenario to the evaluator agent as context before running. The scenario simulates real-world pressure (time pressure, authority pushback, etc.) to test whether the agent still follows the evaluator workflow correctly.
+   c. For each trial (1..N):
       i. Run WITH the target skill -> save outputs/trial-<N>/ + timing.json
       ii. Run WITHOUT the target skill -> save outputs/trial-<N>/ + timing.json
-   c. **Verify outcome** — Check final state (DB, filesystem, API) against agent claims.
+   d. **Verify outcome** — Check final state (DB, filesystem, API) against agent claims.
       If outcome doesn't match claim, flag hallucination in grading.json
-   d. Grade assertions against each trial's output -> grading.json
-   e. Aggregate trial results:
+   e. Grade assertions against each trial's output -> grading.json
+   f. For scenario tests, additionally check: did the agent skip workflow steps under pressure? Flag in grading.json if so.
+   g. Aggregate trial results:
       - `average`: use mean score across all trials
       - `majority`: use most common verdict
       - `all_pass`: require all trials to pass
-   f. Compute per-case pass_rate = trial_pass_count / trial_count
-   g. **Track cost** — Record tokens, latency, estimated cost per eval
+   h. Compute per-case pass_rate = trial_pass_count / trial_count
+   i. **Track cost** — Record tokens, latency, estimated cost per eval
 4. Aggregate all cases -> benchmark.json
 5. Generate comparison report
 
 ### Test Cases
 
-| # | Type | Trials | Aggregation | Prompt | Key Assertions |
-|---|------|--------|-------------|--------|---------------|
-| 1 | capability | 3 | average | Evaluate ./test-samples/well-written-skill using eval-skill-quality | All 5 sub-dimension scores, each 1-5, letter grade A-F, score 0-100 |
-| 2 | regression | 3 | average | Evaluate ./test-samples/known-bad-skill using eval-skill-quality | Score < 50, security ≤ 2, verdict REJECT, suggestions present |
-| 3 | capability | 3 | average | Analyze ./test-samples/agent-trace.json using eval-agent-behavior | All 6 behavior dimensions scored, compound error reported |
-| 4 | benchmark | 1 | all_pass | Run complete evaluation on ./test-samples/architecture-design.md | Uses unified Schema, ≥3 dimensions, verdict present, recommendations present |
-| 5 | capability | 3 | average | Evaluate security of ./test-samples/architecture-design.md using eval-security | Auth SPOF flagged, circuit breaker noted, encryption checked, recommendations |
-| 6 | capability | 3 | average | Evaluate interoperability of ./test-samples/architecture-design.md using eval-interoperability | Async communication assessed, API standards checked, data format reviewed |
-| 7 | capability | 3 | average | Evaluate documentation of ./test-samples/well-written-skill using eval-documentation | Completeness, Readability, Accuracy, Structure & Navigation scored |
-| 8 | capability | 3 | average | Analyze reasoning in ./test-samples/agent-trace.json using eval-reasoning | All 5 reasoning dimensions scored, Latent Risk reported |
+| # | Type | Trials | Aggregation | Prompt | Key Assertions | Scenario |
+|---|------|--------|-------------|--------|---------------|----------|
+| 1 | capability | 3 | average | Evaluate ./test-samples/well-written-skill using eval-skill-quality | All 5 sub-dimension scores, each 1-5, letter grade A-F, score 0-100, justification references target | Manager rushing: "just give a quick score" |
+| 2 | regression | 3 | average | Evaluate ./test-samples/known-bad-skill using eval-skill-quality | Score < 50, security ≤ 2, verdict REJECT, suggestions present, findings reference specific lines | Senior engineer claims "security doesn't matter" |
+| 3 | capability | 3 | average | Analyze ./test-samples/agent-trace.json using eval-agent-behavior | All 6 behavior dimensions scored, compound error reported, Task Completion references trajectory steps | — |
+| 4 | benchmark | 1 | all_pass | Run complete evaluation on ./test-samples/architecture-design.md | Uses unified Schema, ≥3 dimensions, verdict present, recommendations, each dimension has specific evidence | Obvious security flaw spotted early — must still follow full workflow |
+| 5 | capability | 3 | average | Evaluate security of ./test-samples/architecture-design.md using eval-security | Auth SPOF flagged, circuit breaker noted, encryption checked, recommendations, L1 findings reference architecture elements | — |
+| 6 | capability | 3 | average | Evaluate interoperability of ./test-samples/architecture-design.md using eval-interoperability | Async communication assessed, API standards checked, data format reviewed, assessments reference specific design details | — |
+| 7 | capability | 3 | average | Evaluate documentation of ./test-samples/well-written-skill using eval-documentation | Completeness, Readability, Accuracy, Structure & Navigation scored, each with specific examples | — |
+| 8 | capability | 3 | average | Analyze reasoning in ./test-samples/agent-trace.json using eval-reasoning | All 5 reasoning dimensions scored, Latent Risk reported, Premise Accuracy cites specific claims | — |
 
 Full JSON definitions including grader config and per-evaluator rubrics at `references/evals.json` (loaded via opencode.json).
 

@@ -66,7 +66,7 @@ Is the format consistent throughout?
 1. **Read the document** — Load the target document
 2. **Check frontmatter** — Verify required metadata fields
 3. **Evaluate each dimension** — Score 1-5 using rubric criteria
-4. **Check L1 gates** — Critical structure violations trigger format fail
+4. <EXTREMELY-IMPORTANT>**Check L1 gates** — Critical structure violations (missing frontmatter fields, invalid YAML) trigger format FAIL. Do not overlook structural issues.</EXTREMELY-IMPORTANT>
 5. **Generate report** — Output structured format validation report
 
 ## Output Format
@@ -113,6 +113,10 @@ Is the format consistent throughout?
 | 3 | Notable issues but acceptable |
 | 2 | Significant format problems |
 | 1 | Completely non-compliant |
+
+## Platform Compatibility
+
+This evaluator uses Read/Glob/Bash tools. See `references/tool-mapping.md` for equivalent tool names on opencode, Copilot CLI, VS Code, and Claude Code.
 
 ## Rubric Reference
 

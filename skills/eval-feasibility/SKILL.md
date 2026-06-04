@@ -124,6 +124,10 @@ When a proposal is partially feasible, use these criteria to decide the path:
 | 2 | Major feasibility issues, needs redesign |
 | 1 | Not feasible in current form |
 
+## Platform Compatibility
+
+This evaluator uses Read/Glob/Bash tools. See `references/tool-mapping.md` for equivalent tool names on opencode, Copilot CLI, VS Code, and Claude Code.
+
 ## Rubric Reference
 
 Detailed scoring criteria for each dimension are defined in:

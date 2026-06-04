@@ -72,7 +72,7 @@ Does the solution meet regulatory and policy requirements?
 
 1. **Understand the target** — Read the design, code, or architecture document
 2. **Evaluate each dimension** — Score 1-5 using rubric criteria
-3. **Check L1 gate** — Any critical finding (auth bypass, hardcoded secrets, injection) → reject
+3. <EXTREMELY-IMPORTANT>**Check L1 gate** — Any critical finding (auth bypass, hardcoded secrets, injection) → REJECT immediately. Do not skip this check regardless of time pressure.</EXTREMELY-IMPORTANT>
 4. **Generate report** — Output structured security evaluation report
 
 ## Output Format
@@ -109,6 +109,10 @@ Does the solution meet regulatory and policy requirements?
 | 3 | Acceptable security, notable gaps |
 | 2 | Poor security, significant vulnerabilities |
 | 1 | Critical vulnerabilities, not deployable |
+
+## Platform Compatibility
+
+This evaluator uses Read/Glob/Bash tools. See `references/tool-mapping.md` for equivalent tool names on opencode, Copilot CLI, VS Code, and Claude Code.
 
 ## Rubric Reference
 

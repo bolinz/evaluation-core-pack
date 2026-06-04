@@ -14,6 +14,7 @@
     "skills/eval-security/references/security-rubric.yaml",
     "skills/eval-interoperability/references/interoperability-rubric.yaml",
     "skills/eval-documentation/references/documentation-rubric.yaml",
-    "skills/eval-reasoning/references/reasoning-rubric.yaml"
+    "skills/eval-reasoning/references/reasoning-rubric.yaml",
+    "skills/eval-self-check/SKILL.md"
   ]
 }

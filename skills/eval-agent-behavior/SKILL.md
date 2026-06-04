@@ -100,7 +100,7 @@ This indicates the agent is doing the right things in isolation but failing at t
 
 1. **Load trajectory** — Read the agent trace record (tool calls, arguments, return values, reasoning)
 2. **Score each dimension** — For each of the 6 dimensions, assign a score (1-5) based on observed behavior
-3. **Check compound error** — If per-step avg > 4 and task_completion < 3, flag warning
+3. <EXTREMELY-IMPORTANT>**Check compound error** — If per-step avg(dim1-5) > 4 AND task_completion < 3, flag COMPOUND ERROR WARNING. This is the most important signal in agent behavior evaluation — do not miss it.</EXTREMELY-IMPORTANT>
 4. **Generate report** — Output structured report with scores and findings
 
 ## Examples
@@ -157,6 +157,10 @@ A trajectory record containing:
 - Agent reasoning steps (optional)
 - Task description / goal
 - Final outcome
+
+## Platform Compatibility
+
+This evaluator uses Read/Glob/Bash tools. See `references/tool-mapping.md` for equivalent tool names on opencode, Copilot CLI, VS Code, and Claude Code.
 
 ## Rubric Reference
 

@@ -129,6 +129,10 @@ What is the cost and risk of adopting or switching?
 | 2 | Poor choice, significant drawbacks |
 | 1 | Wrong choice, do not select |
 
+## Platform Compatibility
+
+This evaluator uses Read/Glob/Bash tools. See `references/tool-mapping.md` for equivalent tool names on opencode, Copilot CLI, VS Code, and Claude Code.
+
 ## Rubric Reference
 
 Detailed scoring criteria for each dimension are defined in:

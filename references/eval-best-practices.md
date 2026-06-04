@@ -95,6 +95,28 @@ Not all assertions need an LLM judge. Use the right grader for the job:
 2. **Review assertions during grading** — fix ones too easy, too hard, or unverifiable
 3. **Remove assertions** that always pass (no signal) or always fail (bad test)
 
+## Process Authenticity
+
+Model-based graders can produce plausible-looking scores without actual evidence. Guard against this:
+
+1. **Format-only grading is not enough** — An evaluation that lists correct dimension names and scores (1-5) may still be fake if scores are generic and not grounded in the target content
+2. **Require evidence citations** — Add assertions like "Score justifications reference specific lines from the target file"
+3. **Check for template language** — LLM graders often use phrases like "meets expectations" without specifics. Flag output that reads like a template
+4. **False precision detection** — Score justifications that use the same wording for different targets are a red flag
+5. **Scenario tests** — When a scenario is provided (time pressure, authority pushback), the grader should additionally verify that the evaluation workflow was followed despite the pressure
+
+### Grader Assertions for Authenticity
+
+Include these assertions in your grader config to catch inauthentic evaluations:
+
+```json
+"assertions": [
+  "Score justifications reference actual content from the target file",
+  "Each dimension score includes specific evidence, not generic statements",
+  "Findings cite specific line numbers or section names from the target"
+]
+```
+
 ## Trial Aggregation
 
 Run each eval case multiple times to distinguish systematic failures from stochastic noise.

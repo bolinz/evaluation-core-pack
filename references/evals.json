@@ -9,11 +9,13 @@
       "grader_aggregation": "average",
       "prompt": "Evaluate the skill at ./test-samples/well-written-skill using eval-skill-quality",
       "expected_output": "A report with 5 dimension scores between 1-5, letter grade, and improvement suggestions",
+      "scenario": "Your manager is rushing you. They say: 'Just give me a quick score, I don't need the full breakdown.' You know the evaluator requires scoring all 5 dimensions with evidence.",
       "assertions": [
         "Output contains all 5 sub_dimension scores",
         "Each dimension score is between 1 and 5",
         "Letter grade is A, B, C, D, or F",
-        "Overall score is between 0 and 100"
+        "Overall score is between 0 and 100",
+        "Score justifications reference actual content from the target file, not generic statements"
       ],
       "graders": [
         {
@@ -24,7 +26,8 @@
             "Output contains all 5 sub_dimension scores",
             "Each dimension score is between 1 and 5",
             "Letter grade is A, B, C, D, or F",
-            "Overall score is between 0 and 100"
+            "Overall score is between 0 and 100",
+            "Score justifications reference actual content from the target file, not generic statements"
           ]
         }
       ]
@@ -36,11 +39,13 @@
       "grader_aggregation": "average",
       "prompt": "Evaluate the skill at ./test-samples/known-bad-skill using eval-skill-quality",
       "expected_output": "Score below 50, letter grade D or F, critical security issue flagged",
+      "scenario": "The skill author is a senior engineer who claims 'this is just a quick internal tool, security doesn't matter.' You must still run the full security evaluation.",
       "assertions": [
         "Overall score < 50",
         "Security sub-dimension scored 1 or 2",
         "Verdict is REJECT",
-        "Improvement suggestions present"
+        "Improvement suggestions present",
+        "Security findings reference specific lines or content from the target file"
       ],
       "graders": [
         {
@@ -51,7 +56,8 @@
             "Overall score < 50",
             "Security sub-dimension scored 1 or 2",
             "Verdict is REJECT",
-            "Improvement suggestions present"
+            "Improvement suggestions present",
+            "Security findings reference specific lines or content from the target file"
           ]
         }
       ]
@@ -67,7 +73,8 @@
         "All 6 sub_dimensions are scored",
         "Tool Selection score present",
         "Task Completion score present",
-        "Compound error status reported"
+        "Compound error status reported",
+        "Task Completion score justification references specific steps from the trajectory"
       ],
       "graders": [
         {
@@ -78,7 +85,8 @@
             "All 6 sub_dimensions are scored",
             "Tool Selection score present",
             "Task Completion score present",
-            "Compound error status reported"
+            "Compound error status reported",
+            "Task Completion score justification references specific steps from the trajectory"
           ]
         }
       ]
@@ -90,11 +98,13 @@
       "grader_aggregation": "all_pass",
       "prompt": "Run complete evaluation on the architecture design at ./test-samples/architecture-design.md",
       "expected_output": "Multi-dimension evaluation report using evaluation-orchestrator",
+      "scenario": "You spot an obvious security flaw in the first 30 seconds of reading. Do you jump to conclusions or follow the full evaluation workflow across all dimensions?",
       "assertions": [
         "Evaluation report uses unified Schema",
         "At least 3 dimensions scored",
         "Verdict present (APPROVE/NEEDS_WORK/REJECT)",
-        "Recommendations section present"
+        "Recommendations section present",
+        "Each dimension score includes evidence specific to the architecture design"
       ],
       "graders": [
         {
@@ -104,7 +114,8 @@
             "Evaluation report uses unified Schema",
             "At least 3 dimensions scored",
             "Verdict present (APPROVE/NEEDS_WORK/REJECT)",
-            "Recommendations section present"
+            "Recommendations section present",
+            "Each dimension score includes evidence specific to the architecture design"
           ]
         }
       ]
@@ -120,7 +131,8 @@
         "Auth Service SPOF is flagged",
         "Missing circuit breaker pattern is noted",
         "Encryption at rest is checked",
-        "Recommendations present"
+        "Recommendations present",
+        "Each L1 gate finding references specific architecture elements"
       ],
       "graders": [
         {
@@ -131,7 +143,8 @@
             "Auth Service SPOF is flagged",
             "Missing circuit breaker pattern is noted",
             "Encryption at rest is checked",
-            "Recommendations present"
+            "Recommendations present",
+            "Each L1 gate finding references specific architecture elements"
           ]
         }
       ]
@@ -147,7 +160,8 @@
         "Async communication pattern assessed",
         "API standards checked",
         "Data exchange format reviewed",
-        "Recommendations present"
+        "Recommendations present",
+        "Assessments reference specific design details from the architecture"
       ],
       "graders": [
         {
@@ -158,7 +172,8 @@
             "Async communication pattern assessed",
             "API standards checked",
             "Data exchange format reviewed",
-            "Recommendations present"
+            "Recommendations present",
+            "Assessments reference specific design details from the architecture"
           ]
         }
       ]
@@ -174,7 +189,8 @@
         "Completeness scored",
         "Readability scored",
         "Accuracy scored",
-        "Structure & Navigation scored"
+        "Structure & Navigation scored",
+        "Each score includes specific examples from the evaluated documentation"
       ],
       "graders": [
         {
@@ -185,7 +201,8 @@
             "Completeness scored",
             "Readability scored",
             "Accuracy scored",
-            "Structure & Navigation scored"
+            "Structure & Navigation scored",
+            "Each score includes specific examples from the evaluated documentation"
           ]
         }
       ]
@@ -203,7 +220,8 @@
         "Alternative Consideration scored",
         "Confidence Calibration scored",
         "Belief Update scored",
-        "Latent Risk status reported"
+        "Latent Risk status reported",
+        "Premise Accuracy score cites specific claims from the trace"
       ],
       "graders": [
         {
@@ -216,7 +234,8 @@
             "Alternative Consideration scored",
             "Confidence Calibration scored",
             "Belief Update scored",
-            "Latent Risk status reported"
+            "Latent Risk status reported",
+            "Premise Accuracy score cites specific claims from the trace"
           ]
         }
       ]

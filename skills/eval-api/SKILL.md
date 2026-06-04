@@ -52,3 +52,8 @@ Unified entry point for all evaluation requests. Parses the request, identifies 
 ## Output Format
 
 The output follows the unified evaluation-result schema. See eval-registry skill for the full schema definition.
+
+## Platform Compatibility
+
+This evaluator uses Read/Glob/Bash tools. See `references/tool-mapping.md` for equivalent tool names on opencode, Copilot CLI, VS Code, and Claude Code.
+
