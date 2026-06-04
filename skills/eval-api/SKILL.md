@@ -1,6 +1,6 @@
 ---
 name: eval-api
-description: Route evaluation requests to the correct evaluator based on target type. Use when evaluating any skill, agent behavior, architecture, or tech choice. Triggers: "evaluate", "assess quality", "run evaluation", "评价", "评估".
+description: Route evaluation requests to the correct evaluator based on target type. Use when evaluating any skill, agent behavior, architecture, or tech choice. Triggers: "evaluate", "assess quality", "run evaluation", "review my code".
 ---
 
 # Evaluation API

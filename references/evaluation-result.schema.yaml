@@ -1,5 +1,5 @@
-# Evaluation Core Pack - 统一评价结果 Schema
-# 所有 evaluator 的输出必须符合此格式
+# Evaluation Core Pack - Unified Evaluation Result Schema
+# All evaluator outputs must conform to this format
 
 evaluation:
   type: object
@@ -10,8 +10,8 @@ evaluation:
       additionalProperties: false
       required: [evaluator, version, timestamp]
       properties:
-        evaluator: { type: string, description: evaluator 名称 }
-        version: { type: string, description: evaluator 版本 }
+        evaluator: { type: string, description: Evaluator name }
+        version: { type: string, description: Evaluator version }
         timestamp: { type: string, format: datetime }
     target:
       type: object
@@ -40,25 +40,25 @@ evaluation:
           enum: [high, medium, low]
         outcome:
           type: object
-          description: "结果验证 — 验证 agent 声称 vs 实际状态（可选）"
+          description: "Outcome verification — validates agent claims vs actual state (optional)"
           properties:
             verified:
               type: boolean
-              description: "是否进行了结果验证"
+              description: "Whether outcome verification was performed"
             claim_match:
               type: boolean
-              description: "agent 声称与实际状态是否一致"
+              description: "Whether agent claim matches actual state"
             state_checks:
               type: array
               items:
                 type: object
                 properties:
-                  check: { type: string, description: "验证项描述" }
+                  check: { type: string, description: "Verification check description" }
                   passed: { type: boolean }
-                  evidence: { type: string, description: "验证证据（如 SQL 查询结果）" }
+                  evidence: { type: string, description: "Verification evidence (e.g. SQL query result)" }
         cost_analysis:
           type: object
-          description: "成本-性能分析（可选）"
+          description: "Cost-performance analysis (optional)"
           properties:
             total_tokens: { type: integer }
             total_cost_usd: { type: number }
@@ -103,31 +103,31 @@ evaluation:
     trials:
       type: object
       additionalProperties: false
-      description: "多次 trial 聚合结果（可选）"
+      description: "Multi-trial aggregation results (optional)"
       properties:
         count:
           type: integer
-          description: "运行总次数"
+          description: "Total number of runs"
         pass_count:
           type: integer
-          description: "通过次数"
+          description: "Number of passes"
         pass_rate:
           type: number
           minimum: 0
           maximum: 1
-          description: "通过率"
+          description: "Pass rate"
         scores:
           type: array
           items:
             type: number
-          description: "每次 trial 的分数"
+          description: "Score for each trial"
         aggregate:
           type: string
           enum: [majority, average, all_pass]
-          description: "聚合策略"
+          description: "Aggregation strategy"
         grader_results:
           type: array
-          description: "每个 grader 在不同 trial 中的详细结果（预留）"
+          description: "Detailed grader results per trial (reserved)"
           items:
             type: object
             properties:

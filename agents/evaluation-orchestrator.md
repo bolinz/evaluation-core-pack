@@ -14,7 +14,7 @@ model: inherit
 Orchestrates multi-dimensional evaluations by decomposing requests, scheduling evaluators, and aggregating results into unified reports.
 
 ## Role
-评价编排器：分解评价请求，调度子 evaluator，聚合结果。
+Evaluation orchestrator: decomposes evaluation requests, schedules sub-evaluators, aggregates results.
 
 ## When to Activate
 - When running multi-dimensional evaluations

@@ -1,6 +1,6 @@
 ---
 name: eval-format
-description: Validate document format compliance against standards and best practices. Use when checking document structure, format adherence, or completeness. Triggers: "check format", "validate format", "format compliance", "是否符合规范".
+description: Validate document format compliance against standards and best practices. Use when checking document structure, format adherence, or completeness. Triggers: "check format", "validate format", "format compliance", "is this valid".
 ---
 
 # Format Validator

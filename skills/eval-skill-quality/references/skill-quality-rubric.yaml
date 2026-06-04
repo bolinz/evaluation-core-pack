@@ -6,77 +6,77 @@ rubric:
       name: Description & Discoverability
       weight: 0.15
       scoring:
-        5: description 包含行为动词 + 3-5 trigger phrase + 100-300 字符 + 与实际功能一致
-        4: 描述清晰但 trigger phrase < 3
-        3: 描述模糊但可理解用途，无 trigger phrase
-        2: 描述过于笼统，无法判断激活时机
-        1: 无 description 或与实际不符
+        5: description contains action verbs + 3-5 trigger phrases + 100-300 chars + matches skill behavior
+        4: description is clear but fewer than 3 trigger phrases
+        3: description is vague but purpose is understandable, no trigger phrases
+        2: description is too generic, activation timing unclear
+        1: no description or does not match actual behavior
       checklist:
-        - "description 包含行为动词 (create/analyze/validate...)"
-        - "有 3+ 自然语言的 trigger phrase"
-        - "描述长度在 100-300 字符"
-        - "与实际 SKILL.md 正文一致"
+        - description contains action verbs (create/analyze/validate/etc)
+        - has 3+ natural language trigger phrases
+        - description length is 100-300 characters
+        - description matches actual SKILL.md content
 
     - id: structure_and_documentation
       name: Structure & Documentation
       weight: 0.20
       scoring:
-        5: frontmatter 完整 + 清晰章节 + 示例 + 边界说明 + references
-        4: 结构完整但缺少 references 或示例不充分
-        3: 基本结构完整但缺少 When NOT to Use
-        2: 缺少数个关键章节
-        1: 没有标准结构
+        5: complete frontmatter + clear sections + examples + edge cases + references
+        4: well-structured but missing references or incomplete examples
+        3: basic structure present but missing When NOT to Use section
+        2: missing several key sections
+        1: no standard structure
       checklist:
-        - "frontmatter 包含 name + description"
-        - "有 Overview / 使用场景 / 工作流 / 示例"
-        - "有 When NOT to Use"
-        - "代码块标注语言"
-        - "有 references/ 目录管理 L3 资源"
+        - frontmatter contains name + description
+        - has Overview / Use Cases / Workflow / Examples sections
+        - has When NOT to Use section
+        - code blocks have language tags
+        - has references/ directory for managed L3 resources
 
     - id: instruction_clarity
       name: Instruction Clarity
       weight: 0.25
       scoring:
-        5: 工作流明确 + 决策点 + 输入输出清晰 + 错误处理
-        4: 步骤清晰但缺少错误处理或边界情况
-        3: 有步骤但不够具体，有歧义
-        2: 步骤混乱
-        1: 无可执行工作流
+        5: clear workflow + decision points + well-defined inputs/outputs + error handling
+        4: steps are clear but missing error handling or edge case documentation
+        3: has steps but is too vague or ambiguous
+        2: steps are disorganized
+        1: no executable workflow
       checklist:
-        - "步骤编号且有序"
-        - "每步有预期产出"
-        - "决策点标注判断条件"
-        - "有错误处理说明"
-        - "示例展示完整输入到输出过程"
+        - steps are numbered and sequential
+        - each step has an expected output
+        - decision points have clearly stated criteria
+        - error handling is documented
+        - examples show complete input-to-output flow
 
     - id: security_and_safety
       name: Security & Safety
       weight: 0.25
       l1_gate: fail
       scoring:
-        5: 最小权限 + 无危险操作 + 敏感操作确认 + 输入验证
-        4: 权限声明合理但有少量未声明操作
-        3: 缺少数个权限声明或有不明确操作
-        2: 有危险操作（未验证的文件操作）
-        1: 关键安全漏洞（命令注入/凭据泄露）→ L1 fail
+        5: minimum permissions + no dangerous operations + confirmation on sensitive ops + input validation
+        4: reasonable permission declarations with minor undeclared operations
+        3: missing several permission declarations or has ambiguous operations
+        2: contains dangerous operations (unvalidated file operations)
+        1: critical security vulnerability (command injection / credential leak) -> L1 fail
       checklist:
-        - "声明了所需的最小权限"
-        - "无 exec/eval 等危险调用"
-        - "文件操作有路径校验和范围限制"
-        - "网络请求有限制并说明用途"
-        - "无硬编码凭据"
+        - declares minimum required permissions
+        - no exec/eval or other dangerous calls
+        - file operations have path validation and scope limits
+        - network requests are limited with documented purpose
+        - no hardcoded credentials
 
     - id: integration_quality
       name: Integration Quality
       weight: 0.15
       scoring:
-        5: 工具使用恰当 + 跨平台说明 + token 高效 + references 延迟加载
-        4: 工具使用合理但有轻微冗余
-        3: 工具调用过多或不合理 / 缺跨平台说明
-        2: 明显的工具滥用或 SKILL.md 过大
-        1: 无法与其他工具或平台协作
+        5: appropriate tool usage + cross-platform documentation + token efficiency + on-demand references
+        4: tool usage is reasonable with minor redundancy
+        3: excessive or inappropriate tool calls / missing cross-platform notes
+        2: obvious tool misuse or SKILL.md is too large
+        1: cannot cooperate with other tools or platforms
       checklist:
-        - "工具调用次数合理"
-        - "有跨平台适配说明"
-        - "SKILL.md 大小在合理范围"
-        - "L3 资源通过 references/ 按需加载"
+        - tool calls are appropriate for the task
+        - cross-platform adaptations are documented
+        - SKILL.md size is within reasonable bounds
+        - L3 resources are loaded on-demand via references/

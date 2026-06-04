@@ -14,7 +14,7 @@ model: inherit
 Executes structured evaluation cycles following the agentskills standard. Manages iterations, runs with_skill/without_skill comparisons, grades assertions, and generates benchmark reports.
 
 ## Role
-持续评估执行者：管理 eval 迭代循环，生成 benchmark 报告。
+Continuous evaluation runner: manages eval iteration cycles, generates benchmark reports.
 
 ## When to Activate
 - When running capability evaluations for a new skill
